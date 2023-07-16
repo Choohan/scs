@@ -65,7 +65,7 @@ class AuthenticationController extends Controller
             return redirect()->route('sm.list');
         }
         Alert::error('Invalid Credentials!', 'Please try again.');
-        return redirect()->route('sm.list');
+        return redirect()->route('login');
     }
 
     public function dashboard(Request $request){
