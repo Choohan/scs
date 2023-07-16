@@ -26,11 +26,12 @@ Route::get('/dashboard', [AuthenticationController::class, 'dashboard'])->name('
 
 Route::group(['prefix' => 'secretMailbox'], function(){
     Route::get('/', [SecretMailboxController::class, 'index'])->name('sm.list');
-    Route::get('/view', [SecretMailboxController::class, 'view'])->name('sm.view');
+    Route::get('/view/{id}', [SecretMailboxController::class, 'view'])->name('sm.view');
     Route::get('/create', [SecretMailboxController::class, 'create'])->name('sm.create');
     Route::post('/createPost', [SecretMailboxController::class, 'createPost'])->name('sm.createPost');
     Route::post('/replyPost', [SecretMailboxController::class, 'replyPost'])->name('sm.replyPost');
     Route::post('/updateStatusPost', [SecretMailboxController::class, 'updateStatusPost'])->name('sm.updateStatusPost');
+    Route::post('/assignPeerHelper', [SecretMailboxController::class, 'assignPeerHelper'])->name('sm.assignPeerHelper');
 });
 
 Route::group(['prefix' => 'cfg'], function() {
