@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" integrity="sha512-yDUXOUWwbHH4ggxueDnC5vJv4tmfySpVdIcN1LksGZi8W8EVZv4uKGrQc0pVf66zS7LDhFJM7Zdeow1sw1/8Jw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://cdn.datatables.net/v/dt/dt-1.13.5/r-2.5.0/datatables.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="{{ asset('css/base.css') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     </head>
     <body>
         <div class="full-width-container">

@@ -86,3 +86,9 @@ p {
 button[type="submit"] {
     cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+    .container-holder .content-50 {
+        width: 100%;
+    }
+}
