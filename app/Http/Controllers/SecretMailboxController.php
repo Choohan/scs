@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\newEmailStudent;
 use App\Mail\newEmailAdmin;
 use App\Mail\newReplyAuthor;
+use App\Mail\newReplyReciever;
 
 class SecretMailboxController extends Controller
 {
