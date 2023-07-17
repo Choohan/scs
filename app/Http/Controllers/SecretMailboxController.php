@@ -153,6 +153,9 @@ class SecretMailboxController extends Controller
             foreach($peerHelpers as $peer){
                 Mail::to($peer->email)->send(new newReplyReciever($peer, $parentMail, $replies, $studentView));
             }
+        }else{
+            $creator = User::find($parentMail->creator_id);
+            Mail::to($creator->email)->send(new newReplyReciever($creator, $parentMail, $replies, $studentView));
         }
         
         Alert::success('Submit successfully!', 'You had replied a secret mail.');
