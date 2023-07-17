@@ -12,6 +12,7 @@ use Session;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\newEmailStudent;
+use App\Mail\newEmailAdmin;
 
 class SecretMailboxController extends Controller
 {
@@ -90,6 +91,11 @@ class SecretMailboxController extends Controller
 
         Mail::to($user->email)->send(new newEmailStudent($user, $newMail));
         
+        $admins = User::where('isAdmin', '2')->get();
+        foreach ($admins as $admin){
+            Mail::to($admin->email)->send(new newEmailStudent($admin, $newMail));
+        }
+
         Alert::success('Submit successfully!', 'You had submitted a secret mail.');
         return redirect()->route('sm.list');
     }

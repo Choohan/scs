@@ -8,17 +8,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Auth;
-use RealRashid\SweetAlert\Facades\Alert;
-use App\Models\User;
-use App\Models\SecretMail;
-use App\Models\Assignee;
 
-class newEmailStudent extends Mailable
+class newEmailAdmin extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $user, $mail;
 
     /**
      * Create a new message instance.
@@ -35,7 +28,7 @@ class newEmailStudent extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Mail Confirmation - ' . $this->mail->title,
+            subject: 'New Mail - ' . $this->mail->title,
         );
     }
 
@@ -45,7 +38,7 @@ class newEmailStudent extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.newEmailStudent',
+            view: 'mail.newEmailAdmin',
             with: [
                 'user' => $this->user,
                 'mail' => $this->mail
