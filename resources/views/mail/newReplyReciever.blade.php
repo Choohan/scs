@@ -9,9 +9,10 @@
             <a href="{{ route('sm.view', ['id'=>$mail->id]) }}">{{ route('sm.view', ['id'=>$mail->id]) }}</a>
 
             Email is shown as below:
-
+        </p>
             @foreach($replies as $reply)
                 <hr />
+                <p>
                 @if($reply->isAdmin != null)
                     @if($studentView)
                         Author: Peer Helper
@@ -21,10 +22,13 @@
                 @else
                     Author: Annonymous Student
                 @endif
+                </p>
+                <p style="white-space: pre-line">
                 {{ $reply->text }}
+                </p>
             @endforeach
             <hr/>
-
+        <p style="white-space: pre-line">
             <b>Please share with us the problem(s) that you are facing? What is your concern(s)?</b>
             {{ $mail->problem }}
 
