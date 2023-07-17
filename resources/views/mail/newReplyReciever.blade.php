@@ -16,7 +16,7 @@
                 @if($reply->isAdmin != null)
                     <b>Author: Peer Helper</b>
                 @else
-                    Author: Annonymous Student
+                    <b>Author: Annonymous Student</b>
                 @endif
                 </p>
                 <p style="white-space: pre-line">
