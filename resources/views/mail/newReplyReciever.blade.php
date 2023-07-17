@@ -15,9 +15,9 @@
                 <p>
                 @if($reply->isAdmin != null)
                     @if($studentView)
-                        Author: Peer Helper
+                        <b>Author: Peer Helper</b>
                     @else
-                        Author: {{ $reply->name }} (Peer Helper)
+                        <b>Author: {{ $reply->name }} (Peer Helper)</b>
                     @endif
                 @else
                     Author: Annonymous Student
