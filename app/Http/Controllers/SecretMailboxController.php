@@ -28,7 +28,7 @@ class SecretMailboxController extends Controller
         if(!isset($user->isAdmin)){
             $mails = SecretMail::where('creator_id', $user->id)->whereNull('parent_mail_id')->get();
         }else if($user->isAdmin == 1){
-            $mails = SecretMail::rightJoin('assignees', 'assignees.mail_id', 'secret_mail.id')->whereNull('secret_mail.parent_mail_id')->wehre('assignees.peer_id', $user->id)->get();
+            $mails = SecretMail::rightJoin('assignees', 'assignees.mail_id', 'secret_mail.id')->whereNull('secret_mail.parent_mail_id')->where('assignees.peer_id', $user->id)->get();
         }else{
             $mails = SecretMail::whereNull('parent_mail_id')->get();
         }
