@@ -10,6 +10,9 @@ use App\Models\SecretMail;
 use App\Models\Assignee;
 use Session;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailVerification;
+
 class SecretMailboxController extends Controller
 {
     public function index(){
@@ -77,10 +80,15 @@ class SecretMailboxController extends Controller
 
         $newMail = SecretMail::create([
             'title' => $request->input('title'),
-            'text' => $request->input('message'),
+            'problem' => $request->input('problem'),
+            'feeling' => $request->input('feeling'),
+            'thoughts' => $request->input('thoughts'),
             'creator_id' => $user->id,
             'author_id' => $user->id,
         ]);
+
+
+        Mail::to($user->email)->send(new EmailVerification($user, $newMail));
         
         Alert::success('Submit successfully!', 'You had submitted a secret mail.');
         return redirect()->route('sm.list');

@@ -3,7 +3,14 @@
     <div class="items"><h2>{{$mail->title}}</h2>
         <p class="author">Author: Annonymous Student</p>
         <p class="item-content" style="white-space: pre-line">
-            {{ $mail->text }}
+            <b>Please share with us the problem(s) that you are facing? What is your concern(s)?</b>
+            {{ $mail->problem }}
+
+            <b>How do you feel??</b>
+            {{ $mail->feeling }}
+            
+            <b>What is in your mind? Your thoughts towards the problems / concerns.</b>
+            {{ $mail->thoughts }}
         </p>
     </div>
     @foreach($replies as $reply)
