@@ -14,11 +14,7 @@
                 <hr />
                 <p>
                 @if($reply->isAdmin != null)
-                    @if($studentView)
-                        <b>Author: Peer Helper</b>
-                    @else
-                        <b>Author: {{ $reply->name }} (Peer Helper)</b>
-                    @endif
+                    <b>Author: Peer Helper</b>
                 @else
                     Author: Annonymous Student
                 @endif
