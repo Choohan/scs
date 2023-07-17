@@ -139,7 +139,7 @@ class SecretMailboxController extends Controller
         Mail::to($user->email)->send(new newReplyAuthor($user, $parentMail, $replies, $studentView));
 
         if($user->id == $parentMail->creator_id){
-            $peerHelpers = User::rightJoin('assignees', 'assignees.peer_id', 'user.id')->where('assignees.mail_id', $parentMail->id)->get();
+            $peerHelpers = User::rightJoin('assignees', 'assignees.peer_id', 'users.id')->where('assignees.mail_id', $parentMail->id)->get();
 
             foreach($peerHelpers as $peer){
                 Mail::to($peer->email)->send(new newReplyReciever($peer, $parentMail, $replies, $studentView));
