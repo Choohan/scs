@@ -13,6 +13,7 @@ use Session;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\newEmailStudent;
 use App\Mail\newEmailAdmin;
+use App\Mail\newReplyAuthor;
 
 class SecretMailboxController extends Controller
 {
@@ -51,6 +52,10 @@ class SecretMailboxController extends Controller
             }
             $studentView = True;
         }else if($user->isAdmin == 1){
+            $mails = SecretMail::rightJoin('assignees', 'assignees.mail_id', 'secret_mail.id')->whereNull('secret_mail.parent_mail_id')->where('secret_mail.id', $id)->get();
+            if($mails->count() < 1){
+                Auth::error('Insufficient Permission!', 'You are not allowed to view this mail.');
+            }
             $isPeerHelper = True;
         }
 
@@ -123,6 +128,23 @@ class SecretMailboxController extends Controller
             'creator_id' => $parentMail->creator_id,
             'author_id' => $user->id,
         ]);
+
+        $studentView = False;
+        if(!isset($user->isAdmin)){
+            $studentView = True;
+        }
+
+        $replies = SecretMail::leftJoin('users', 'users.id', 'secret_mail.author_id')->where('secret_mail.parent_mail_id', $id)->get();
+
+        Mail::to($user->email)->send(new newReplyAuthor($user, $parentMail, $replies, $studentView));
+
+        if($user->id == $parentMail->creator_id){
+            $peerHelpers = User::rightJoin('assignees', 'assignees.peer_id', 'user.id')->where('mail.id', $parentMail->id)->get();
+
+            foreach($peerHelpers as $peer){
+                Mail::to($peer->email)->send(new newReplyReciever($peer, $parentMail, $replies, $studentView));
+            }
+        }
         
         Alert::success('Submit successfully!', 'You had replied a secret mail.');
         return redirect()->route('sm.view', ['id'=>$parentMail->id]);
