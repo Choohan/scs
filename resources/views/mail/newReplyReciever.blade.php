@@ -11,16 +11,16 @@
             Email is shown as below:
 
             @foreach($replies as $reply)
+                <hr />
                 @if($reply->isAdmin != null)
                     @if($studentView)
                         Author: Peer Helper
                     @else
                         Author: {{ $reply->name }} (Peer Helper)
                     @endif
-            @else
-                Author: Annonymous Student
-            @endif
-                <hr />
+                @else
+                    Author: Annonymous Student
+                @endif
                 {{ $reply->text }}
             @endforeach
             <hr/>
