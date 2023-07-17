@@ -93,7 +93,7 @@ class SecretMailboxController extends Controller
         
         $admins = User::where('isAdmin', '2')->get();
         foreach ($admins as $admin){
-            Mail::to($admin->email)->send(new newEmailStudent($admin, $newMail));
+            Mail::to($admin->email)->send(new newEmailAdmin($admin, $newMail));
         }
 
         Alert::success('Submit successfully!', 'You had submitted a secret mail.');
