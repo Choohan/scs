@@ -11,7 +11,7 @@ use App\Models\Assignee;
 use Session;
 
 use Illuminate\Support\Facades\Mail;
-use App\Mail\EmailVerification;
+use App\Mail\newEmailStudent;
 
 class SecretMailboxController extends Controller
 {
@@ -88,7 +88,7 @@ class SecretMailboxController extends Controller
         ]);
 
 
-        Mail::to($user->email)->send(new EmailVerification($user, $newMail));
+        Mail::to($user->email)->send(new newEmailStudent($user, $newMail));
         
         Alert::success('Submit successfully!', 'You had submitted a secret mail.');
         return redirect()->route('sm.list');
