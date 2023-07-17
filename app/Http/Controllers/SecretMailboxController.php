@@ -93,6 +93,15 @@ class SecretMailboxController extends Controller
             'author_id' => $user->id,
         ]);
 
+        
+        
+        if($user->isAdmin == 1){
+            $assignee = Assignee::create([
+                'peer_id' => $user->id,
+                'mail_id' => $newMail->id
+            ]);
+        }
+
 
         Mail::to($user->email)->send(new newEmailStudent($user, $newMail));
         
