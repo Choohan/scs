@@ -134,7 +134,7 @@ class SecretMailboxController extends Controller
             $studentView = True;
         }
 
-        $replies = SecretMail::leftJoin('users', 'users.id', 'secret_mail.author_id')->where('secret_mail.parent_mail_id', $id)->get();
+        $replies = SecretMail::leftJoin('users', 'users.id', 'secret_mail.author_id')->where('secret_mail.parent_mail_id', $parentMail->id)->get();
 
         Mail::to($user->email)->send(new newReplyAuthor($user, $parentMail, $replies, $studentView));
 
