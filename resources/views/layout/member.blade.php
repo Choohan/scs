@@ -24,7 +24,7 @@
                     <a href="{{ route('sm.list') }}"><img src="{{asset('img/logo.png')}}" class="logo" alt="Student Counseling Services" /></a>
                 </div>
                 <div class="column-80 top-nav" >
-                    <p class="logout"><a href="{{ route('logout') }}">Logout</a></p>
+                    <p class="logout"><a href="{{ route('logout') }}">Logout ( {{ Auth::user()->name }} )</a></p>
                 </div>
             </header>
             <div class="content-container">
