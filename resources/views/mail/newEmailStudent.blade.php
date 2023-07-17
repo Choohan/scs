@@ -8,7 +8,7 @@
             You will receive a notification in your student email whenever there is any updates in the mail!<br/><br/>
 
             <b>Check the email at:</b> <br/><br/>
-            <a href="{{ route('sm.view', ['id'=>$mail_id]) }}">{{ route('sm.view', ['id'=>$mail_id]) }}</a><br/><br/>
+            <a href="{{ route('sm.view', ['id'=>$mail->id]) }}">{{ route('sm.view', ['id'=>$mail->id]) }}</a><br/><br/>
 
             Regards,<br/><br/>
 

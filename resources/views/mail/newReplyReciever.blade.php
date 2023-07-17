@@ -6,7 +6,7 @@
            You had received a reply for mail.
 
             <b>Check your mail at:</b>
-            <a href="{{ route('sm.view', ['id'=>$mail_id]) }}">{{ route('sm.view', ['id'=>$mail_id]) }}</a>
+            <a href="{{ route('sm.view', ['id'=>$mail->id]) }}">{{ route('sm.view', ['id'=>$mail->id]) }}</a>
 
             Email is shown as below:
 

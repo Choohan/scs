@@ -6,7 +6,7 @@
            We had received received your replies and will definitely notify you once you gotten a new message through this email!
 
             <b>Check your mail at:</b>
-            <a href="{{ route('sm.view', ['id'=>$mail_id]) }}">{{ route('sm.view', ['id'=>$mail_id]) }}</a>
+            <a href="{{ route('sm.view', ['id'=>$mail->id]) }}">{{ route('sm.view', ['id'=>$mail->id]) }}</a>
 
 
             Regards,
