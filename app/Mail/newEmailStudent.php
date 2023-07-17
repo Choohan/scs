@@ -47,8 +47,8 @@ class newEmailStudent extends Mailable
         return new Content(
             view: 'mail.newEmailStudent',
             with: [
-                'user' => $user,
-                'mail' => $mail
+                'user' => $this->user,
+                'mail' => $this->mail
             ]
         );
     }
